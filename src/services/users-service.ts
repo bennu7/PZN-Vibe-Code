@@ -2,7 +2,13 @@ import { db } from '../db';
 import { users } from '../db/schema';
 import { eq } from 'drizzle-orm';
 
-export const registerUser = async (payload: any) => {
+export interface RegisterUserPayload {
+  name: string;
+  email: string;
+  password: string;
+}
+
+export const registerUser = async (payload: RegisterUserPayload) => {
   const { name, email, password } = payload;
 
   // 1. Cek apakah email sudah terdaftar
